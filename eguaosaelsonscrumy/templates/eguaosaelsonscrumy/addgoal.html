@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Goal</title>
+</head>
+<body>
+<h1><strong>Add a new goal</strong></h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" name="submit" value="Submit">
+</form>
+{% if error %}
+{{ error }}
+{% endif %}
+<a href="{% url 'eguaosaelsonscrumy:home' %}">Go Back To Home</a>
+</body>
+</html>

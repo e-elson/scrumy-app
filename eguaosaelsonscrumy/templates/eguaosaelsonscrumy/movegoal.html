@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Goal</title>
+</head>
+<h2>Update your goal status</h2>
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" name="submit" value="Submit">
+</form>
+{% if error %}
+{{ error }}
+{% endif %}
+<a href="{% url 'eguaosaelsonscrumy:home' %}">Back to Home</a>
+</body>
+</html>

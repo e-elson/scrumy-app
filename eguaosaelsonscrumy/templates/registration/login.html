@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <a href="{% url 'eguaosaelsonscrumy:index' %}">Index</a>
+    <form method="POST">
+        {% csrf_token %}
+        <strong>Username:</strong>
+        <input type="text" name="username"><br>
+        <strong>Password:</strong>
+        <input type="password" name="password"><br>
+        <input type="submit">
+        {% if form.errors %}
+        <h4><strong>{{ form.errors }}</strong></h4>
+        {% endif %}
+    </form>
+</body>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<h1 align="center"><strong>Home</strong></h1>
+<h2 align="center">Current User: {{ user.username }}</h2>
+  <table style="margin-bottom:30px; width:75%" border="1px" align="center">
+    <tr>
+      <th>User</th>
+      <th>Weekly Goals</th>
+      <th>Daily Goals</th>
+      <th>Verify Goals</th>
+      <th>Done Goals</th>
+    </tr>
+    {% for user in users%}
+    <tr>
+      <td>{{ user.username }}</td>
+      <td>
+        <ul>
+          {% for goal in weekly_goals %}
+          {% ifequal user goal.user %}
+          <li>
+            <a href="{% url 'eguaosaelsonscrumy:move_goal' goal.goal_id user.id %}">
+              {{ goal.goal_name }}, {{ goal.goal_id }}
+            </a>
+          </li>
+          {% endifequal%}
+          {% endfor %}
+        </ul>
+      </td>
+      <td>
+        <ul>
+          {% for goal in daily_goals %}
+          {% ifequal user goal.user %}
+          <li>
+            <a href="{% url 'eguaosaelsonscrumy:move_goal' goal.goal_id user.id %}">
+              {{ goal.goal_name }}, {{ goal.goal_id }}
+            </a>
+          </li>
+          {% endifequal%}
+          {% endfor %}
+        </ul>
+      </td>
+      <td>
+        <ul>
+          {% for goal in verify_goals %}
+          {% ifequal user goal.user %}
+          <li>
+            <a href="{% url 'eguaosaelsonscrumy:move_goal' goal.goal_id user.id %}">
+              {{ goal.goal_name }}, {{ goal.goal_id }}
+            </a>
+          </li>
+          {% endifequal%}
+          {% endfor %}
+        </ul>
+      </td>
+      <td>
+        <ul>
+          {% for goal in done_goals %}
+          {% ifequal user goal.user %}
+          <li>
+            <a href="{% url 'eguaosaelsonscrumy:move_goal' goal.goal_id user.id %}">
+              {{ goal.goal_name }}, {{ goal.goal_id }}
+            </a>
+          </li>
+          {% endifequal%}
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+<a style="margin-top: 100px; margin-left: 160px;" href="{% url 'eguaosaelsonscrumy:add_goal' %}"><button>Add a new goal here </button></a>
+</body>
